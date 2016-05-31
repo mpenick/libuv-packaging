@@ -1,0 +1,2 @@
+opts=filenamemangle=s/.+\/v?(\d\S*)\.tar\.gz/libuv-$1\.tar\.gz/ \
+  https://github.com/libuv/libuv/tags .*/v?(\d\S*)\.tar\.gz

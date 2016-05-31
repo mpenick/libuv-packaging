@@ -1,0 +1,36 @@
+#!/usr/bin/make -f
+# -*- makefile -*-
+
+include /usr/share/dpkg/default.mk
+
+# Uncomment this to turn on verbose mode.
+#export DH_VERBOSE=1
+
+export SOVER=1.0.0
+export SONAME=libuv.so.$(SOVER)
+export SOPKG=libuv$(SOVER)
+
+%:
+	dh $@ 
+
+override_dh_auto_install:
+	dh_auto_install
+
+override_dh_auto_configure:
+	sh autogen.sh
+	dh_auto_configure
+
+override_dh_auto_test:
+
+override_dh_strip:
+	dh_strip --dbg-package=libuv-dbg
+	sed -i s/@DEB_HOST_MULTIARCH@/$(DEB_HOST_MULTIARCH)/ debian/libuv-dev/usr/lib/$(DEB_HOST_MULTIARCH)/pkgconfig/libuv.pc
+	sed -i s/@DEB_VERSION_UPSTREAM@/$(DEB_VERSION_UPSTREAM)/ debian/libuv-dev/usr/lib/$(DEB_HOST_MULTIARCH)/pkgconfig/libuv.pc
+
+override_dh_auto_clean:
+	if test -f Makefile; then  \
+		$(MAKE) distclean; \
+	fi
+	rm -rf ltmain.sh m4/ltoptions.m4 m4/ltsugar.m4 m4/libtool.m4 m4/lt~obsolete.m4 m4/ltversion.m4
+	find . -name .buildstamp -delete
+	dh_clean

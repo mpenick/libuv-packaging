@@ -1,0 +1,11 @@
+libuv (1.8.0-1) xenial; urgency=medium
+
+  * Version 1.8.0
+
+ -- Michael Penick <michael.penick@datastax.com>  Tue, 31 May 2016 14:20:29 -0700
+
+libuv (1.0.0-1) unstable; urgency=low
+
+  * Initial release
+
+ -- Michael Penick <michael.penick@datastax.com>  Tue, 20 Jan 2015 20:20:27 -0700
