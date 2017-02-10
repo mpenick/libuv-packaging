@@ -30,7 +30,7 @@ release="1"
 dist=$(lsb_release -s -c)
 base="libuv-v$version"
 archive="$base.tar.gz"
-url="http://dist.libuv.org/v$version/$archive"
+url="http://dist.libuv.org/dist/v$version/$archive"
 
 if [[ -d build ]]; then
   read -p "Build directory exists, remove? [y|n] " -n 1 -r
