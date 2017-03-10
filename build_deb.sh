@@ -28,9 +28,9 @@ fi
 
 release="1"
 dist=$(lsb_release -s -c)
-base="libuv-v$version"
+base="libuv-$version"
 archive="$base.tar.gz"
-url="http://dist.libuv.org/dist/v$version/$archive"
+url="https://github.com/libuv/libuv/archive/v$version.tar.gz"
 
 if [[ -d build ]]; then
   read -p "Build directory exists, remove? [y|n] " -n 1 -r
@@ -41,8 +41,13 @@ if [[ -d build ]]; then
 fi
 mkdir -p build
 
+echo "Downloading $archive"
 if [[ ! -f "$archive" ]]; then
-  curl -L --url "$url" --output "build/$archive"
+  curl -Lf --url "$url" --output "build/$archive"
+  if [ $? -ne 0 ]; then
+    echo "Unable to download archive from $url"
+    exit $?
+  fi
 fi
 
 echo "Extracting $archive"

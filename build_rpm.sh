@@ -26,7 +26,7 @@ fi
 
 release="1"
 archive="libuv-v$version.tar.gz"
-url="http://dist.libuv.org/v$version/$archive"
+url="https://github.com/libuv/libuv/archive/v$version.tar.gz"
 
 if [[ -d build ]]; then
   read -p "Build directory exists, remove? [y|n] " -n 1 -r
@@ -38,12 +38,16 @@ fi
 mkdir -p build/{BUILD,RPMS,SOURCES,SPECS,SRPMS}
 
 echo "Downloading $archive"
-cp libuv.pc.in build/SOURCES
 if [[ ! -f "$archive" ]]; then
-  curl -L --url "$url" --output "build/SOURCES/$archive"
+  curl -Lf --url "$url" --output "build/$archive"
+  if [ $? -ne 0 ]; then
+    echo "Unable to download archive from $url"
+    exit $?
+  fi
 fi
 
 echo "Building package:"
+cp libuv.pc.in build/SOURCES
 rpmbuild --target $arch --define "_topdir ${PWD}/build" --define "libuv_version $version" -ba libuv.spec
 
 exit 0
