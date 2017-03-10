@@ -39,7 +39,7 @@ mkdir -p build/{BUILD,RPMS,SOURCES,SPECS,SRPMS}
 
 echo "Downloading $archive"
 if [[ ! -f "$archive" ]]; then
-  curl -Lf --url "$url" --output "build/$archive"
+  curl -Lf --url "$url" --output "build/SOURCES/$archive"
   if [ $? -ne 0 ]; then
     echo "Unable to download archive from $url"
     exit $?
@@ -48,6 +48,8 @@ fi
 
 echo "Building package:"
 cp libuv.pc.in build/SOURCES
+echo "* $(date +"%a %b %d %Y") Michael Penick <michael.penick@datastax.com> - $version-1" >> libuv.spec
+echo "- release" >> libuv.spec
 rpmbuild --target $arch --define "_topdir ${PWD}/build" --define "libuv_version $version" -ba libuv.spec
 
 exit 0

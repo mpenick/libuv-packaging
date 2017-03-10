@@ -7,7 +7,7 @@ Summary: Cross-platform asychronous I/O
 Group: Development/Tools
 License: MIT, BSD and ISC
 URL: http://http://libuv.org/
-Source0: http://libuv.org/dist/v%{version}/%{name}-v%{version}.tar.gz
+Source0: %{name}-v%{version}.tar.gz
 Source1: libuv.pc.in
 
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
@@ -32,7 +32,7 @@ Requires(postun): /sbin/ldconfig
 Development libraries for libuv
 
 %prep
-%setup -qn %{name}-v%{version}
+%setup -qn %{name}-%{version}
 
 %build
 export CFLAGS='%{optflags}'
@@ -77,5 +77,3 @@ rm -rf %{buildroot}
 %{_libdir}/pkgconfig/*.pc
 
 %changelog
-* Fri Jan 23 2015 Michael Penick <michael.penick@datastax.com> - 1.2.1-1
-- init release
