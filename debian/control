@@ -1,5 +1,5 @@
-Source: libuv
-Priority: extra
+Source: libuv1
+Priority: optional
 Maintainer: Michael Penick <michael.penick@datastax.com>
 Build-Depends: debhelper (>= 9.0.0), dh-exec, make, libtool, autoconf, automake
 Standards-Version: 3.9.2
@@ -8,7 +8,7 @@ Homepage: http://libuv.org
 Vcs-Git: git://github.com/libuv/libuv.git
 Vcs-Browser: https://github.com/libuv/libuv
 
-Package: libuv
+Package: libuv1
 Section: libs
 Architecture: any
 Pre-Depends: multiarch-support, ${misc:Pre-Depends}
@@ -18,18 +18,18 @@ Description: cross-platform asychronous I/O - runtime library
  primarily developed for use by Node.js, but it’s also used by Luvit, Julia, 
  pyuv, and others.
 
-Package: libuv-dev
+Package: libuv1-dev
 Section: libdevel
 Architecture: any
-Depends: libuv (= ${binary:Version}), ${misc:Depends}
+Depends: libuv1 (= ${binary:Version}), ${misc:Depends}
 Description: cross-platform asychronous I/O - development files
  A multi-platform support library with a focus on asynchronous I/O. This
  package contains development files.
 
-Package: libuv-dbg
+Package: libuv1-dbg
 Section: debug
 Architecture: any
-Depends: libuv (= ${binary:Version}), ${misc:Depends}
+Depends: libuv1 (= ${binary:Version}), ${misc:Depends}
 Description: cross-platform asychronous I/O - debugging symbols
  A multi-platform support library with a focus on asynchronous I/O. This
  package contains debugging symbols.

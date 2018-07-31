@@ -1,4 +1,4 @@
-libuv (0.10.0-1) unstable; urgency=low
+libuv1 (1.0.0-1) unstable; urgency=low
 
   * Initial release
 

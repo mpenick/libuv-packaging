@@ -11,7 +11,7 @@ export SONAME=libuv.so.$(SOVER)
 export SOPKG=libuv$(SOVER)
 
 %:
-	dh $@ 
+	dh $@
 
 override_dh_auto_install:
 	dh_auto_install
@@ -23,9 +23,9 @@ override_dh_auto_configure:
 override_dh_auto_test:
 
 override_dh_strip:
-	dh_strip --dbg-package=libuv-dbg
-	sed -i s/@DEB_HOST_MULTIARCH@/$(DEB_HOST_MULTIARCH)/ debian/libuv-dev/usr/lib/$(DEB_HOST_MULTIARCH)/pkgconfig/libuv.pc
-	sed -i s/@DEB_VERSION_UPSTREAM@/$(DEB_VERSION_UPSTREAM)/ debian/libuv-dev/usr/lib/$(DEB_HOST_MULTIARCH)/pkgconfig/libuv.pc
+	dh_strip --dbg-package=libuv1-dbg
+	sed -i s/@DEB_HOST_MULTIARCH@/$(DEB_HOST_MULTIARCH)/ debian/libuv1-dev/usr/lib/$(DEB_HOST_MULTIARCH)/pkgconfig/libuv.pc
+	sed -i s/@DEB_VERSION_UPSTREAM@/$(DEB_VERSION_UPSTREAM)/ debian/libuv1-dev/usr/lib/$(DEB_HOST_MULTIARCH)/pkgconfig/libuv.pc
 
 override_dh_auto_clean:
 	if test -f Makefile; then  \
